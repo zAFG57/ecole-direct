@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devoir du {{json_object['date']}}</title>
+</head>
+<body>
+    
+
+
+    <br/><br/><br/>
+    {%for i in json_object['matieres']%}
+        <div>
+            {{i['matiere']}}, 
+            {{i['nomProf']}} : </br></br>
+            {{i['aFaire']['contenu']}}<br/><br/>
+            {%for y in i['aFaire']%}
+                {{y}}<br/>
+            {%endfor%}
+
+        {{i}}</div></br></br>
+    {%endfor%}
+
+
+
+</body>
+</html>
+
+<style>
+    body html, h1, p{
+        padding: 0px;
+        margin: 0px;
+    }
+body, html {
+    background: #333;
+    color: coral;
+}
+</style>
