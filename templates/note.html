@@ -2,27 +2,46 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge>
-    <meta name="viewport" content="width=device-width>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
     <title>notes</title>
 </head>
 <body>  
-
+	<link rel="stylesheet" href="/templates/css/note.css" type="text/css">
 		
-    	<div class="boite"></div>
-    	<div class="HIGEO boite">
-    		<h1>histoire géographie</h1>
-    	</div>
-    	<div class="ALL2 boite"><h1>allemand</h1></div>
-    	<div class="PH-CH boite"><h1>physique chimie</h1></div>
-    	<div class="AGL1 boite"><h1>anglais</h1></div>
-    	<div class="MATHS boite"><h1>mathématique</h1></div>
+    	<div class="boite">
+			<h1>histoire géographie</h1>
+			<div class="HIGEO"></div>
+		</div>
+    	<div class="boite">
+			<h1>allemand</h1>
+			<div class="ALL2"></div>
+		</div>
+    	<div class="boite">
+			<h1>physique chimie</h1>
+			<div class="PH-CH"></div>
+		</div>
+    	<div class="boite">
+			<h1>anglais</h1>
+			<div class="AGL1"></div>
+		</div>
+    	<div class="boite">
+			<h1>mathématique</h1>
+			<div class="MATHS"></div>
+		</div>
     
     
     {%for i in json_object['notes']%}
         	<script>
-	        	node = document.createTextNode("{{i['valeur']}} ");
-	        	document.getElementsByClassName("{{i['codeMatiere']}}")[0].appendChild(node);
+				over = document.createElement("p")
+				notesur = document.createTextNode("{{i['moyenneClasse']}}");
+				over.appendChild(notesur);
+				p = document.createElement("p")
+				p.classList.add("test");
+	        	note = document.createTextNode("{{i['valeur']}}/{{i['noteSur']}}");
+				p.appendChild(note);
+				p.appendChild(over);
+	        	document.getElementsByClassName("{{i['codeMatiere']}}")[0].appendChild(p);
     		</script>
     {%endfor%}
     	
@@ -31,33 +50,3 @@
 
 </body>
 </html>
-<style>
-* {
-	color: #ffd;
-}
-body, html {
-	margin: 0px;
-	padding: 0px;
-	background: #333;
-}
-.boite {
-	padding: 25px;
-	border: 1px solid #ffd;
-	border-radius: 25px;
-	margin: 5vh;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	flex-direction: column;
-}
-.boite h1 {
-	text-align: center;
-	margin-bottom: 25px;
-}
-.boite text {
-	display: flex;
-	color: #33ff33;
-}
-
-
-</style>
