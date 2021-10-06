@@ -125,3 +125,4 @@ class EcoleDirect:
         else:
             # self.token = connection.json()['token']
             return connection.json()['data']
+ 
