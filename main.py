@@ -1,9 +1,9 @@
 from EcoleDirect import *
 from flask import Flask
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect , send_from_directory
 from json import *
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='./templates')
 utilisateur = EcoleDirect("LUDOVICDEBORDE", "Sylvainc1")
 
 
@@ -50,6 +50,9 @@ def message():
     return f""" 
         {test}
     """
+
+
+
 
 app.run(host='127.0.0.1', port=8080)
  
