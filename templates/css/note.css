@@ -1,0 +1,48 @@
+* {
+	color: #ffd;
+}
+body, html {
+	margin: 0px;
+	padding: 0px;
+	background: #333;
+}
+.boite {
+	padding: 25px;
+	border: 1px solid #ffd;
+	border-radius: 25px;
+	margin: 5vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+}
+.boite h1 {
+	text-align: center;
+	margin-bottom: 25px;
+}
+.boite text {
+	display: flex;
+	color: #33ff33;
+}
+.boite div {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boite div .test {
+    margin-right: 25px;
+    font-size: 1.5rem;
+}
+.boite div .test p {
+    display: none;
+    cursor: pointer;
+}
+.boite div .test:hover {
+    font-size: 0px;
+}
+.boite div .test:hover p {
+    display: block;
+    font-size: 1.5rem;
+}

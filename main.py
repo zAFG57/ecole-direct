@@ -1,31 +1,22 @@
-
 from EcoleDirect import *
 from flask import Flask
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect , send_from_directory
 from json import *
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='./templates')
 utilisateur = EcoleDirect("LUDOVICDEBORDE", "Sylvainc1")
 
 
 @app.route('/')
 def index():
 
-    return f""" 
-        <a href="./travail">travail</a>
-        </br></br>
-        <a href="./note">note</a>
-        </br></br>
-        <a href="./message">message</a>
-    """
-
-
+    lien = ['travail','note','message']
+    return render_template('index.html',lien=lien)
 @app.route('/travail')
 def travail():
     xzdfazfa = utilisateur.getHW()
     json_dump = json.dumps(xzdfazfa)
     json_object = json.loads(json_dump)
-            
     return render_template('travail.html',json_object=json_object)
 @app.route('/travail/<jours>')
 def travailjours(jours):
@@ -36,19 +27,14 @@ def travailjours(jours):
     return render_template('travailjours.html',json_object=json_object)
 
 
-
 @app.route('/note')
 def note():
     xzdfazfa = utilisateur.getNotes()
     json_dump = json.dumps(xzdfazfa)
     json_object = json.loads(json_dump)
-    test = " "
-    for y in json_object['notes']:
-        test = f"{y['libelleMatiere']}: {y['valeur']} / {y['noteSur']}   pour une moyenne de classe à {y['moyenneClasse']}"
-    return f""" 
-        {test}
-    """
-
+    liste = " "
+    return render_template('note.html',json_object=json_object, liste=liste)
+ 
 @app.route('/message')
 def message():
     xzdfazfa = utilisateur.getmes()
@@ -65,4 +51,8 @@ def message():
         {test}
     """
 
-app.run(host='0.0.0.0', port=80)
+
+
+
+app.run(host='127.0.0.1', port=8080)
+ 
