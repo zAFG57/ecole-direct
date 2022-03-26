@@ -5,7 +5,7 @@ from flask import render_template, url_for, request, redirect
 from json import *
 
 app = Flask(__name__)
-utilisateur = EcoleDirect("LUDOVICDEBORDE", "Sylvainc1")
+utilisateur = EcoleDirect("nom d'utilisateur", "mots de passe")
 
 
 @app.route('/')
